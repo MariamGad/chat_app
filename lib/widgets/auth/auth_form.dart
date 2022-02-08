@@ -38,13 +38,6 @@ class _AuthFormState extends State<AuthForm> {
                   ElevatedButton(
                     child: Text('Login'),
                     onPressed: () {},
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                      ),
-                    ),
                   ),
                   TextButton(
                       child: Text('Create new account'), onPressed: () {})
