@@ -12,7 +12,6 @@ class ChatScreen extends StatelessWidget {
             .collection('chats/bGTIad3gGDH68LdWAOKz/messages')
             .snapshots(),
         builder: (BuildContext ctx, AsyncSnapshot<dynamic> snapshot) {
-
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
@@ -31,7 +30,13 @@ class ChatScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          FirebaseFirestore.instance
+              .collection('chats/bGTIad3gGDH68LdWAOKz/messages')
+              .add({
+            'text': 'added by pressing the button',
+          });
+        },
       ),
     );
   }
