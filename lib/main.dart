@@ -19,6 +19,11 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.pink,
               accentColor: Colors.deepPurple,
+              textTheme: TextTheme(
+                headline1: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
               accentColorBrightness: Brightness.dark,
               elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ButtonStyle(
