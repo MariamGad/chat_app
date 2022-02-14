@@ -64,9 +64,6 @@ class _AuthScreenState extends State<AuthScreen> {
         _isLoading = false;
       });
     }
-    setState(() {
-      _isLoading = false;
-    });
   }
 
   @override
