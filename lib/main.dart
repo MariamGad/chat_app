@@ -35,17 +35,24 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            home: snapshot.connectionState == ConnectionState.done
-                ? StreamBuilder(
+            home: snapshot.connectionState == ConnectionState.waiting
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : StreamBuilder(
                     stream: FirebaseAuth.instance.authStateChanges(),
                     builder: (ctx, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
                       if (snapshot.hasData) {
                         return ChatScreen();
                       }
                       return AuthScreen();
                     },
-                  )
-                : CircularProgressIndicator(),
+                  ),
           );
         });
   }
