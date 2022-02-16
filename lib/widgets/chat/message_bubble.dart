@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +35,8 @@ class MessageBubble extends StatelessWidget {
             horizontal: 16,
           ),
           child: Column(
+            crossAxisAlignment:
+                isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
             children: [
               FutureBuilder(
                 future: FirebaseFirestore.instance
@@ -43,7 +47,15 @@ class MessageBubble extends StatelessWidget {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Text('loading');
                   }
-                  return Text(snapshot.data['username']);
+                  return Text(
+                    snapshot.data['username'],
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: isMe
+                          ? Colors.black
+                          : Theme.of(context).textTheme.headline1!.color,
+                    ),
+                  );
                 },
               ),
               Text(
